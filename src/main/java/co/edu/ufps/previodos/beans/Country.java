@@ -8,6 +8,13 @@ public class Country implements Serializable {
 	
 	private String name;
 	
+	
+	public Country(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	public Country(String name) {
 		super();
 		this.name = name;
