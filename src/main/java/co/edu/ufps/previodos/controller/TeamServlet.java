@@ -3,6 +3,8 @@ package co.edu.ufps.previodos.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import co.edu.ufps.previodos.beans.Country;
+import co.edu.ufps.previodos.beans.Team;
 import co.edu.ufps.previodos.dao.TeamDao;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
@@ -73,6 +75,19 @@ public class TeamServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void insertarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException ,SQLException, IOException {
+		
+		String name = request.getParameter("name");
+		String country = request.getParameter("country");
+		
+		Team team = new Team(name,country);
+		Country countryT = new Country(country);
+		
+		teamDao.insert(team, countryT);
+		
+		response.sendRedirect("list");
 	}
 
 }

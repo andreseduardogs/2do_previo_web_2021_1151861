@@ -13,6 +13,23 @@ public class Team implements Serializable {
 	public Team() {
 		super();
 	}
+	
+	
+
+	public Team(String name, String country) {
+		this.name = name;
+		this.country = country;
+	}
+
+
+
+	public Team(Integer id, String name, String country) {
+		this.id = id;
+		this.name = name;
+		this.country = country;
+	}
+
+
 
 	public Integer getId() {
 		return id;

@@ -54,10 +54,20 @@ public class ConexionPostgreSQL {
 		
 	}
 	
-public PreparedStatement setPreparedStatement (String sql) throws SQLException{
+		public PreparedStatement setPreparedStatement (String sql) throws SQLException{
+				
+				this.preparedStatement = (PreparedStatement) con.prepareStatement(sql);
+				return this.preparedStatement;
+			}
 		
-		this.preparedStatement = (PreparedStatement) con.prepareStatement(sql);
-		return this.preparedStatement;
-	}
+		public int execute() throws SQLException{
+			int result = preparedStatement.executeUpdate();
+			return result;
+		}
+		
+		public ResultSet query() throws SQLException{
+			ResultSet res = preparedStatement.executeQuery();
+			return res ;
+		}
 	
 }

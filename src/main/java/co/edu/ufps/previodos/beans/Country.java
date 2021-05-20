@@ -7,6 +7,11 @@ public class Country implements Serializable {
 	private Integer id;
 	
 	private String name;
+	
+	public Country(String name) {
+		super();
+		this.name = name;
+	}
 
 	public Country() {
 		super();
