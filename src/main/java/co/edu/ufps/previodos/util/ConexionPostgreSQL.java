@@ -2,15 +2,18 @@ package co.edu.ufps.previodos.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+
 
 public class ConexionPostgreSQL {
 
 	public Connection con;
 
-	public Statement st = null;
+	private PreparedStatement preparedStatement;
 
 	public ConexionPostgreSQL() {
 		
@@ -40,20 +43,6 @@ public class ConexionPostgreSQL {
 		
 	}
 	
-	public ResultSet consultar(String sql) {
-		try {
-			Statement st = this.con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			return rs;
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-		
-	}
-	
 	
 	public void cerrarConexcion() {
 		try {
@@ -63,6 +52,12 @@ public class ConexionPostgreSQL {
 			e.printStackTrace();
 		}
 		
+	}
+	
+public PreparedStatement setPreparedStatement (String sql) throws SQLException{
+		
+		this.preparedStatement = (PreparedStatement) con.prepareStatement(sql);
+		return this.preparedStatement;
 	}
 	
 }
